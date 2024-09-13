@@ -9,6 +9,10 @@ class TouchInterestController
 {
     public function __invoke(Interest $interest)
     {
+        if ($interest->subscribers()->count() == 0) {
+            return response()->json(data: ['message' => 'There is no subscribers to notify,']);
+        }
+
         $action = new SendTouchInterestToSubscribersAction($interest);
 
         if (! $action->execute()) {
