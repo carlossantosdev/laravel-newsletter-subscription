@@ -12,8 +12,9 @@ class SubscribeInterestController
     public function __invoke(SubscribeInterestRequest $request)
     {
         $validated = $request->validated();
+
         if (InterestSubscription::where('email', $validated['email'])->where('interest_id', $validated['interest_id'])->exists()) {
-            return response()->json(data: ['message' => 'You are already subscribed to this interest list.'], status: 200);
+            return response()->json(data: ['message' => 'You are already subscribed to this interest list.'], status: 422);
         }
 
         $action = new SubscribeInterestAction($request->validated());
