@@ -16,7 +16,7 @@ final class CreateUserAction
 
     public function execute(): User
     {
-        $this->data['token'] = Str::random(16);
+        $this->data['token'] = $this->data['token'] ?? Str::random(16);
 
         return User::create($this->data);
     }
