@@ -5,7 +5,7 @@ namespace App\Actions;
 use App\Events\InterestSubscribed;
 use App\Models\InterestSubscription;
 
-final class SubscribeInterestAction
+class SubscribeInterestAction
 {
     private array $data;
 

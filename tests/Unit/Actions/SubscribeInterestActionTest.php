@@ -3,10 +3,12 @@
 namespace Tests\Unit\Actions;
 
 use App\Actions\SubscribeInterestAction;
+use App\Events\InterestSubscribed;
 use App\Models\Interest;
 use App\Models\InterestSubscription;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 class SubscribeInterestActionTest extends TestCase
@@ -18,6 +20,8 @@ class SubscribeInterestActionTest extends TestCase
      */
     public function shouldCreateInterestSubscriptionWithAllData(): void
     {
+        Event::fake([InterestSubscribed::class]);
+
         $interest = Interest::factory()->create();
 
         $data = [
@@ -28,6 +32,8 @@ class SubscribeInterestActionTest extends TestCase
         $action = new SubscribeInterestAction($data);
         $this->assertInstanceOf(InterestSubscription::class, $action->execute());
         $this->assertDatabaseHas('interest_subscriptions', $data);
+
+        Event::assertDispatched(InterestSubscribed::class);
     }
 
     /**
@@ -38,6 +44,8 @@ class SubscribeInterestActionTest extends TestCase
         $this->withoutExceptionHandling();
         $this->expectException(UniqueConstraintViolationException::class);
 
+        Event::fake([InterestSubscribed::class]);
+
         $interest = Interest::factory()->create();
 
         $data = [
@@ -47,6 +55,10 @@ class SubscribeInterestActionTest extends TestCase
 
         $action = new SubscribeInterestAction($data);
         $action->execute();
+
+        Event::assertDispatched(InterestSubscribed::class);
+
         $action->execute();
+        Event::assertNotDispatched(InterestSubscribed::class);
     }
 }
