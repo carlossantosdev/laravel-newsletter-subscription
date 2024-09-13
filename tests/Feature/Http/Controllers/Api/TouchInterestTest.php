@@ -19,7 +19,7 @@ class TouchInterestTest extends TestCase
         $interest = Interest::factory()->create();
         InterestSubscription::factory()->create(['interest_id' => $interest->id]);
 
-        $response = $this->post(uri: '/api/touch/1', headers: ['accept' => 'application/json']);
+        $response = $this->post(uri: '/api/touch/'.$interest->id, headers: ['accept' => 'application/json']);
 
         $response->assertStatus(202);
     }
