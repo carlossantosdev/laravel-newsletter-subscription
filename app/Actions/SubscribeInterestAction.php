@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Events\InterestSubscribed;
 use App\Models\InterestSubscription;
 
 final class SubscribeInterestAction
@@ -15,6 +16,17 @@ final class SubscribeInterestAction
 
     public function execute(): InterestSubscription
     {
-        return InterestSubscription::create($this->data);
+        $interestSubscription = InterestSubscription::create($this->data);
+
+        if ($interestSubscription) {
+            $this->notifyAdmins($interestSubscription);
+        }
+
+        return $interestSubscription;
+    }
+
+    private function notifyAdmins(InterestSubscription $interestSubscription): void
+    {
+        InterestSubscribed::dispatch($interestSubscription);
     }
 }
