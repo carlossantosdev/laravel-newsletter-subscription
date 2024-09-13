@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "e6a3e12f-ff25-43e5-8a3c-0eb8feea8485",
+		"name": "Newsletter Subscribe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2755701"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "custom-token",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Carlos Santos\",\n    \"email\": \"carlos@santos.com\",\n    \"password\": \"carlosS@nt0s\",\n    \"password_confirmation\": \"carlosS@nt0s\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/users",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Interest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "custom-token",
+						"type": "default"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Info produtos 7\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/interests",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"interests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscribe Interest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"interest_id\": 1,\n    \"email\": \"carlos@santos.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost/api/subscribe/interest/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"subscribe",
+						"interest",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Touch Interest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "localhost/api/touch/1",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"api",
+						"touch",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
