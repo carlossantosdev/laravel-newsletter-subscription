@@ -10,17 +10,35 @@
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 ## Setup
-To set up this project is simple, just run the command below.
+To set up this project is simple, just run the commands below.
+
+At the root dir of the project, the command will create the nginx and app container
 ```sh
-docker-compose up
+docker-compose up -d
 ```
 
-## How to access and test?
-This project is API Rest based so, you can't access any resource in your browser. You should use a shell curl command or tools like Postman, Insomnia and others tools.
+Install project dependencies
+> docker exec -it {container_name} sh -c "{command}"
+```sh
+docker exec -it laravel-newsletter-subscription-app-1 sh -c "composer install"
+```
 
-To keep your setup fast and easy, you should use `api.postman_collection.json` and import in your postman. The collection have all you need to interact with the application.
+Run project boot set tup
+```sh
+docker exec -it laravel-newsletter-subscription-app-1 sh -c "composer boot-project"
+```
 
-The project use the SQLite as your database. You don't need to install anything else.
+## How to access, run and test the application?
+This project is API REST based so, you can't access any resource in your browser. You should use a shell curl command or tools like Postman, Insomnia and others tools.
+
+If you try to access the application by your browser, you will see a page similar as:
+<img src=".github/assets/404-error.png" />
+
+To keep your set up fast and easy you should use `api.postman_collection.json` file. The file is localized at the root path of the project.
+
+**Import the file in your postman. The collection have all you need to interact with the application.**
+
+The project use SQLite as your database. You don't need to install anything else.
 
 ### Test coverage
 <img src=".github/assets/coverage.png" />
