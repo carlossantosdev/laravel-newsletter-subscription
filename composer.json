@@ -31,7 +31,7 @@
     },
     "scripts": {
         "boot-project": [
-          "php artisan migrate:fresh && php artisan db:seed --class=CreateAdminUserSeeder"
+          "php artisan migrate && php artisan db:seed --class=CreateAdminUserSeeder"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
