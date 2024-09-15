@@ -62,7 +62,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"Info produtos 7\"\n}",
+					"raw": "{\n    \"name\": \"Info produto 1\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,15 +103,14 @@
 					}
 				},
 				"url": {
-					"raw": "localhost/api/subscribe/interest/1",
+					"raw": "localhost/api/subscribe/interest",
 					"host": [
 						"localhost"
 					],
 					"path": [
 						"api",
 						"subscribe",
-						"interest",
-						"1"
+						"interest"
 					]
 				}
 			},
