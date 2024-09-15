@@ -1,0 +1,34 @@
+networks:
+  laravel:
+
+services:
+  nginx:
+    build:
+      context: ./docker
+      dockerfile: nginx.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html:delegated
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  app:
+    build:
+      context: .
+      dockerfile: docker/php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
+    tty: true
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${PWD}:/var/www/html
+    networks:
+      - laravel
