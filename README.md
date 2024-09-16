@@ -1,5 +1,11 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
+<p align="center">
+<a href="https://laravel.com" target="_blank">
+<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="300" alt="Laravel Logo">
+</a>
+</p>
+<p align="center">
+Newsletter Subscription
+</p>
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
@@ -7,23 +13,26 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This project was builded with Laravel 11. You can access the documentation of the framework at <a href="https://laravel.com/docs/11.x" target="_blank">Laravel Docs - v11.x</a>.
 
 ## Setup
 To set up this project is simple, just run the commands below.
 
-At the root dir of the project, the command will create the nginx and app container
+At the root dir of the project run `docker-compose up -d`, the command will create the nginx and app container on docker. Sure, your Docker must be running.
 ```sh
 docker-compose up -d
 ```
 
 Install project dependencies
-> docker exec -it {container_name} sh -c "{command}"
+> docker exec -it {container_name} sh -c "{command}", by default, use the command below.
 ```sh
 docker exec -it laravel-newsletter-subscription-app-1 sh -c "composer install"
 ```
 
-Run project boot set tup
+Run project boot set up. The command will run the migrations and run the CreateAdminSeeder class that will create a admin user.
+
+Path: `database/seeders/CreateAdminUserSeeder.php`.
+
 ```sh
 docker exec -it laravel-newsletter-subscription-app-1 sh -c "composer boot-project"
 ```
