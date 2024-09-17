@@ -18,9 +18,9 @@ This project was builded with Laravel 11. You can access the documentation of th
 ## Setup
 To set up this project is simple, just run the commands below.
 
-At the root dir of the project run `docker-compose up -d`, the command will create the nginx and app container on docker. Sure, your Docker must be running.
+At the root dir of the project run `docker compose up -d`, the command will create the nginx and app container on docker. Sure, your Docker must be running.
 ```sh
-docker-compose up -d
+docker compose up -d
 ```
 
 Install project dependencies
